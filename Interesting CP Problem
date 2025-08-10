@@ -1,0 +1,79 @@
+#pragma GCC optimize("O3,unroll-loops")
+#include <bits/stdc++.h>
+using namespace std;
+#define fastIO() do { ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr); } while(0)
+#define ll long long
+#define vi vector<int>
+#define vll vector<ll>
+#define umpii unordered_map<int, int>
+#define umpll unordered_map<ll, ll>
+#define umsii unordered_set<int>
+#define mp make_pair
+#define pii pair<int,int>
+#define vvi vector<vi>
+#define vvll vector<vll>
+#define pll pair<ll,ll>
+#define psb push_back
+#define pop pop_back
+#define all(x) (x).begin(), (x).end()
+#define per(x) next_permutation(all(x))
+#define f first
+#define s second
+#define ln "\n"
+#define mod (int)(1e9+7)
+//---------------------DEBUGGING----------------//
+#ifndef ONLINE_JUDGE
+#define debug(x) cerr<<#x<<"=";_print(x);cerr<< endl;
+#else
+#define debug(x)
+#endif
+void _print(ll t) {cerr << t;}
+void _print(int t) {cerr << t;}
+void _print(string t) {cerr << t;}
+void _print(char t) {cerr << t;}
+void _print(float t) {cerr << t;}
+void _print(double t) {cerr << t;}
+template<typename T>void _print(const vector<T> &x){
+    cerr<<'[';
+   for(size_t i=0;i<x.size();++i){
+    _print(x[i]);
+    if(i!=x.size()-1)cerr<<",";
+    }
+    cerr<<']';
+}
+//---------------------SOLUTION-----------------//
+
+int solve(int n){
+  int ct=0;
+  while(n){
+    ct++;
+    n/=10;
+  }
+  return ct;
+}
+int main() {
+    fastIO(); 
+    vi v;
+   for(int i=1;i<=9;i++){
+    int x=i;
+    while(x<=10000){
+      v.psb(x);
+      x=x*10+i;
+    }
+   } 
+   // debug(v);
+   umpii mp;
+   int sum=0;
+   for(auto i:v){
+    sum+=solve(i);
+    // debug(sum);
+    mp[i]=sum;
+}
+    int t;
+    cin>>t;
+    while(t--){
+    int n;
+    cin>>n;
+    cout<<mp[n]<<ln;
+}
+}
