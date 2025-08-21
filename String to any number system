@@ -1,0 +1,63 @@
+
+1. stoi function
+
+In C++, stoi converts a string to an integer.
+
+Its signature is:
+
+int stoi(const string& str, size_t* idx = 0, int base = 10);
+
+str → the string you want to convert
+
+idx → (optional) position till where it converted
+
+base → number base (10 for decimal, 2 for binary, 16 for hex, etc.)
+
+-------------------------------------------------
+
+2. stoi(v[i], 0, 2)
+
+Here:
+
+v[i] → a string (probably "101", "1100", etc. in binary format)
+
+0 → we’re not interested in index, so we pass 0
+
+2 → means we interpret the string as binary
+
+So, stoi(v[i], 0, 2) converts the binary string into a decimal integer.
+
+Example:
+
+stoi("101", 0, 2)  // = 5   (binary 101 → decimal 5)
+stoi("1100", 0, 2) // = 12  (binary 1100 → decimal 12)
+
+------------------------------------------
+
+3. ans.push_back(...)
+
+This means we are storing the converted integer inside a vector ans.
+
+So effectively:
+
+ans.push_back(stoi(v[i], 0, 2));
+
+takes the binary string v[i], converts it into a decimal integer, and pushes it into the vector ans.
+
+------------------------------------------
+
+✅ Example:
+
+vector<string> v = {"101", "111", "1001"};
+vector<int> ans;
+
+for (int i = 0; i < v.size(); i++) {
+    ans.push_back(stoi(v[i], 0, 2));
+}
+
+Now ans = {5, 7, 9}.
+
+---
+
+Do you want me to show you a manual implementation of binary string → integer conversion (without stoi) also, so it becomes clearer?
+
