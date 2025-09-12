@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// Random number generator
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
+// Returns a random integer in [l, r]
+int randint(int l, int r) {
+    return uniform_int_distribution<int>(l, r)(rng);
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int T = 5; // Number of testcases to generate
+    cout << T << "\n";
+    
+    for (int t = 0; t < T; t++) {
+        int n = randint(1, 10); // Size of array
+        cout << n << "\n";
+        for (int i = 0; i < n; i++) {
+            cout << randint(1, 100) << " "; // Random values in [1,100]
+        }
+        cout << "\n";
+    }
+}
